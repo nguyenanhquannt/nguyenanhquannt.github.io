@@ -1,0 +1,47 @@
+ <!DOCTYPE html>
+    <html>
+           <head>
+                      <style>
+                        body{
+                          text-align: center;
+                        }
+		#noidung{background: rgb(0, 247, 255); height:250px; width:100%;color:rgb(0, 0, 0); font-size:25px;}
+		button{background:rgb(255, 0, 217);}
+
+	</style>
+           </head>
+           <body>
+            <h1>Bài tập JavaScript</h1>
+            <p id="noidung"></p>
+            <button type="button" onclick="hienthi()">Giới thiệu</button>            
+           <button type="button" onclick="tinhtong()">Tính tổng</button>            
+          <button type="button" onclick="tinhtongchan()">Tính tổng chẵn</button>  
+            <script>
+              function hienthi() {
+	        // Giới thiệu tên
+                document.getElementById("noidung").innerHTML = "Xin chào. Tôi là Nguyễn Anh Quân";
+              }
+
+              function tinhtong() {
+          //Tính tổng từ 1 -> 10
+          let text =0;
+          for( let i=1 ; i<=10;i++){
+            text +=i;
+          }
+	document.getElementById("noidung").innerHTML =text ;
+              }
+
+            function tinhtongchan() {
+            //Tính tổng các số chẳn từ 1 -> 10
+          let text =0;
+          for( let i=1 ; i<=10;i++){
+            if(i%2==0){
+            text +=i;
+          }
+        }
+          document.getElementById("noidung").innerHTML =text ;x 
+              }
+            </script>    
+         </body>
+    </html>
+      
