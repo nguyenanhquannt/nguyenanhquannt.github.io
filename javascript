@@ -1,0 +1,179 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            section {
+                display: flex;
+                justify-content: center;
+                height: 100%;
+            }
+            .container {
+                display: flex;
+                width: 60rem;
+                height: 30rem;
+                margin: auto;
+                background: #0dff00;
+            }
+            .input-data {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 2em;
+            }
+            input[type="submit"],
+            input[type="reset"] {
+                width: 10rem;
+                padding: .9em 0;
+            }
+            form > *,
+            content > * {
+                padding-bottom: 1em;
+            }
+            .flex {
+                display: flex;
+            }
+            .gender > * {
+                padding-left: 2em;
+            }
+            .hobby {
+                flex-direction: column;
+            }
+            .hobby > * {
+                padding-left: 2em;
+                padding-bottom: .5em;
+            }
+            .button {
+                padding: 0;
+            }
+            .output-data {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                background: #ffee00;
+            }
+            .content > * {
+                padding-left: 2em;
+                padding-bottom: 1em;
+            }
+            @media (max-width: 60rem) {
+                .container {
+                    flex-direction: column;
+                }
+                .content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 15rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="container">
+                <div class="input-data">
+                    <form id="user-detail">
+
+                        <div class="name">
+                            <label for="name">Tên:</label>
+                            <input type="text" id="user-name">
+                        </div>
+                        <div class="email">
+                            <label for="name">Lớp:</label>
+                            <input type="text" id="user-email">
+                        </div>
+
+                        <label for="gender">Giới Tính:</label>
+                        <div class="flex gender">
+                            <div class="male">
+                                <input type="radio" name="gender" value="Nam" id="user-gender">
+                                <label for="male">Nam</label>
+                            </div>
+                            <div class="female">
+                                <input type="radio" name="gender" value="Nữ" id="user-gender">
+                                <label for="female">Nữ</label>
+                            </div>
+                        </div>
+
+                        <div class="nation">
+                            <label for="nation">Quốc Tịch:</label>
+                            <select name="nationality" id="user-nation">
+                                <option>Việt Nam</option>
+                                <option>Mỹ</option>
+                                <option>Úc</option>
+                                <option>Nhật Bản</option>
+                                <option>Thái</option>
+                            </select>
+                        </div>
+
+                        <label for="hobby">Sở Thích:</label>
+                        <div class="flex hobby">
+                            <div class="coding">
+                                <input type="checkbox" name="hobby" value="Lập Trình">
+                                <label for="coding">Chơi game</label>
+                            </div>
+                            <div class="travel">
+                                <input type="checkbox" name="hobby" value="Du Lịch">
+                                <label for="travel">Nghe nhạc</label>
+                            </div>
+                        </div>
+
+                        <div class="button">
+                            <input type="submit" value="Chấp Nhận" id="submit">
+                            <input type="reset">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="output-data">
+                    <div class="content">
+                        <p class="content-name">Tên:</p>
+                        <p class="content-email">Lớp:</p>
+                        <p class="content-gender">Giới Tính:</p>
+                        <p class="content-nation">Quốc Tịch:</p>
+                        <p class="content-hobby">Sở Thích:</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+    </body>
+    <script>
+        const form = document.getElementById('user-detail').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('user-name').value;
+            document.querySelector('.content-name').textContent = `Tên: ${name}`;
+
+            const email = document.getElementById('user-email').value;
+            document.querySelector('.content-email').textContent = `Email: ${email}`;
+
+            const genders = document.getElementsByName('gender');
+            genders.forEach(gender => {
+                if (gender.checked == true) {
+                    document.querySelector('.content-gender').textContent = `Giới Tính: ${gender.value}`;
+                };
+            });
+
+            const nation = document.getElementById('user-nation').value;
+            document.querySelector('.content-nation').textContent = `Quốc Tịch: ${nation}`;
+
+            const hobbies = document.getElementsByName('hobby');
+            hobbyArray = [];
+            hobbies.forEach(hobby => {
+                if (hobby.checked == true) {
+                    hobbyArray.push(hobby.value);
+                };
+            });
+            document.querySelector('.content-hobby').textContent = `Sở Thích: ${hobbyArray.join(', ')}`;
+        });
+    </script>
+</html>
